@@ -12,31 +12,30 @@
         .pdf-card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .pdf-card h3 { color: #2e86de; }
         button { padding: 10px 20px; background: #2e86de; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        .admin-link { text-align: center; margin-top: 30px; }
     </style>
 </head>
 <body oncontextmenu="alert('Right click is disabled'); return false;">
 
     <h1>Wafula Educational Library</h1>
-    <p style="text-align: center;">Browse premium downloadable learning materials.</p>
+    <p style="text-align: center;">Download our premium learning materials.</p>
 
     <div class="pdf-grid">
         <div class="pdf-card">
             <h3>Mastering Algebra</h3>
-            <p>Learn algebra with practical examples and solutions.</p>
+            <p>Practical examples & step-by-step solutions for learners.</p>
             <button onclick="payAndDownload('Mastering Algebra', 'https://example.com/demo1.pdf')">Read Full PDF (KES 50)</button>
         </div>
 
         <div class="pdf-card">
             <h3>Advanced Biology Revision</h3>
-            <p>Comprehensive biology notes for KCSE and university level.</p>
+            <p>Comprehensive biology notes for exams and revision.</p>
             <button onclick="payAndDownload('Advanced Biology Revision', 'https://example.com/demo2.pdf')">Read Full PDF (KES 50)</button>
         </div>
+    </div>
 
-        <div class="pdf-card">
-            <h3>Business Management Guide</h3>
-            <p>Essential management principles simplified for startups.</p>
-            <button onclick="payAndDownload('Business Management Guide', 'https://example.com/demo3.pdf')">Read Full PDF (KES 50)</button>
-        </div>
+    <div class="admin-link">
+        <a href="admin.html" style="color: #2e86de;">Admin Panel</a>
     </div>
 
     <script src="https://js.paystack.co/v1/inline.js"></script>
