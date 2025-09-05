@@ -1,84 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" id="metaDescription" content="Read inspiring stories and educational insights on Samuwa Edukates – your daily source of motivation." />
-  <title>Samuwa Edukates</title>
+  <meta name="description" content="Samuwa Edukates – Daily inspirational stories and educational insights to motivate and uplift you." />
+  <title>Samuwa Edukates – Inspire Me</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
     :root{
       --primary:#ff7043;
-      --accent:#fbc02d;
+      --accent6:#fbc02d;
       --bg:#fffaf3;
       --text:#2c2c2c;
-      --muted:#666;
-      --card:#ffffff;
-      --shadow:0 6px 14px rgba(0,0,0,.08);
       --footer:#d84315;
       --footer2:#ad1457;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    body{margin:0;font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 
-    header{position:sticky;top:0;z-index:50;background:var(--primary);color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 10px rgba(0,0,0,.1)}
-    .logo{display:flex;align-items:center;font-family:'Times New Roman',serif;font-size:24px;font-weight:bold}
+    /* Header */
+    header{position:sticky;top:0;z-index:100;background:var(--primary);color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+    .logo{display:flex;align-items:center;font-size:24px;font-weight:bold;font-family:'Times New Roman',serif}
     .logo img{height:42px;margin-right:10px;border-radius:6px}
     .hamburger{font-size:28px;cursor:pointer;display:none}
     .nav{display:flex;gap:20px}
     .nav a{color:#fff;text-decoration:none;font-weight:500}
     .nav a:hover{opacity:.85}
 
-    .post-container{max-width:900px;margin:40px auto;padding:0 20px}
-    .post-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
-    .post-content{padding:20px}
-    .post-title{font-size:30px;font-weight:700;margin:10px 0;color:#222}
+    /* Featured */
+    .featured{position:relative;max-width:1100px;margin:20px auto;border-radius:12px;overflow:hidden;height:420px;background:#ddd}
+    .featured img{width:100%;height:100%;object-fit:cover;display:block}
+    .featured .overlay{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.8));color:#fff;padding:18px;font-size:24px;font-weight:700}
 
-    .meta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-size:14px;color:var(--muted);margin-bottom:16px}
-    .meta-item{display:inline-flex;align-items:center;gap:6px}
-    .meta-dot::before{content:"•";margin:0 6px}
+    /* Category */
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .category-title{font-size:22px;font-weight:700;color:#fff;padding:10px;border-radius:8px;margin:34px 0 12px;background:var(--accent6)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+    .post-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:.2s}
+    .post-card:hover{transform:translateY(-4px)}
+    .post-card img{width:100%;height:180px;object-fit:cover;display:block}
+    .post-card .content{padding:12px}
+    .post-card .title{font-weight:700;margin-bottom:6px;font-size:16px}
+    .post-card .excerpt{opacity:.85;font-size:14px}
 
-    .post-media img{width:100%;max-height:460px;display:block;object-fit:cover}
+    /* Load More */
+    .load-more-wrap{text-align:center;margin:30px 0}
+    .load-more{background:var(--primary);color:#fff;border:none;padding:12px 28px;border-radius:30px;font-size:16px;cursor:pointer;font-weight:600;box-shadow:0 4px 8px rgba(0,0,0,.15);transition:.2s}
+    .load-more:hover{background:#e65100}
 
-    .post-body{padding:20px}
-    .post-body img{max-width:100%;border-radius:8px;margin:10px 0}
-
-    .share{margin:30px 20px}
-    .share span{display:block;font-weight:600;margin-bottom:10px}
-    .share a{margin-right:12px;font-size:20px;color:var(--primary);text-decoration:none}
-    .share a:hover{opacity:.8}
-
-    .related{padding:0 20px 24px}
-    .related h3{margin:10px 0 14px;font-size:20px;font-weight:700;color:#222}
-    .related-list{list-style:none;padding:0;margin:0}
-    .related-list li{margin:8px 0}
-    .related-list a{text-decoration:none;color:var(--primary);font-weight:500}
-    .related-list a:hover{text-decoration:underline}
-
+    /* Footer */
     footer{background:linear-gradient(45deg,var(--footer),var(--footer2));color:#fff;padding:50px 20px 20px;margin-top:50px}
     .footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
     .footer-col h4{margin-bottom:15px;font-size:18px;font-weight:700}
     .footer-col p{font-size:14px;line-height:1.6;opacity:.9}
     .footer-col a{display:block;color:#fff;text-decoration:none;font-size:14px;margin:6px 0;opacity:.9}
     .footer-col a:hover{opacity:1;text-decoration:underline}
-    .social-links{display:flex;gap:14px;margin-top:8px}
-    .social-links a{font-size:18px;color:#fff}
+    .social-links a{margin-right:12px;font-size:18px;color:#fff}
     .newsletter input[type="email"]{width:100%;padding:10px;border-radius:6px;border:none;margin-bottom:10px}
-    .newsletter button{width:100%;padding:10px;border:none;border-radius:6px;background:var(--accent);color:#000;font-weight:600;cursor:pointer}
+    .newsletter button{width:100%;padding:10px;border:none;border-radius:6px;background:var(--accent6);color:#000;font-weight:600;cursor:pointer}
     .newsletter button:hover{background:#f9a825}
     .footer-bottom{text-align:center;margin-top:30px;font-size:13px;opacity:.85}
 
+    /* Responsive */
     @media(max-width:768px){
       .hamburger{display:block}
-      .nav{display:none;flex-direction:column;position:absolute;top:60px;right:20px;background:var(--primary);padding:14px;border-radius:10px}
+      .nav{display:none;flex-direction:column;position:absolute;top:60px;right:20px;background:var(--primary);padding:14px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
       .nav.show{display:flex}
-      .post-title{font-size:24px}
     }
   </style>
 </head>
@@ -92,46 +85,60 @@
     </div>
     <div class="hamburger" id="hamburger">☰</div>
     <nav class="nav" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="index.html#inspire">Inspire Me</a>
-      <a href="index.html#news">News</a>
-      <a href="index.html#contact">Contact</a>
+      <a href="/">Home</a>
+      <a href="#inspire">Inspire Me</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- Post -->
-  <article class="post-container">
-    <div class="post-card">
-      <div class="post-content">
-        <h1 class="post-title" id="postTitle">Loading...</h1>
+  <!-- Featured (Sample first, replaced by Firebase later) -->
+  <div class="featured" id="featuredStory">
+    <a href="#">
+      <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?w=1200" alt="Believe in Yourself">
+      <div class="overlay">Believe in Yourself – Your Journey Starts Today</div>
+    </a>
+  </div>
 
-        <div class="meta-row">
-          <div class="meta-item"><i class="fa-regular fa-user"></i><strong id="postAuthor">Author</strong></div>
-          <div class="meta-item meta-dot"><i class="fa-regular fa-calendar"></i><time id="postDate"></time></div>
-          <div class="meta-item meta-dot"><span aria-hidden="true">👁️</span><span id="postViews">0</span> views</div>
+  <!-- Posts -->
+  <div class="container" id="contentArea">
+    <section>
+      <div class="category-title">Inspire Me</div>
+      <div class="grid" id="postsGrid">
+        <!-- Sample posts shown immediately -->
+        <div class="post-card">
+          <a href="#">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800" alt="Sample Inspiration">
+          </a>
+          <div class="content">
+            <div class="title">Embrace Positivity Every Morning</div>
+            <div class="excerpt">Start your day with gratitude and focus on small wins...</div>
+          </div>
+        </div>
+        <div class="post-card">
+          <a href="#">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800" alt="Sample Inspiration">
+          </a>
+          <div class="content">
+            <div class="title">Learning Never Stops</div>
+            <div class="excerpt">Knowledge grows when you seek inspiration and keep pushing forward...</div>
+          </div>
+        </div>
+        <div class="post-card">
+          <a href="#">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800" alt="Sample Inspiration">
+          </a>
+          <div class="content">
+            <div class="title">The Courage to Begin</div>
+            <div class="excerpt">Every great journey starts with one small but powerful step...</div>
+          </div>
         </div>
       </div>
-
-      <div class="post-media">
-        <img id="postImage" src="https://via.placeholder.com/1200x460?text=Loading..." alt="Post Featured Image">
+      <div class="load-more-wrap">
+        <button id="loadMoreBtn" class="load-more">Load More</button>
       </div>
-
-      <div class="post-body" id="postBody"></div>
-
-      <div class="share">
-        <span>Share this post:</span>
-        <a id="shareFacebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a id="shareTwitter" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a id="shareLinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a id="shareWhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      </div>
-
-      <div class="related">
-        <h3>Related Posts</h3>
-        <ul class="related-list" id="relatedPosts"></ul>
-      </div>
-    </div>
-  </article>
+    </section>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -142,16 +149,16 @@
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
-        <a href="index.html">Home</a>
-        <a href="index.html#inspire">Inspire Me</a>
-        <a href="index.html#news">News</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="/">Home</a>
+        <a href="#inspire">Inspire Me</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
       </div>
       <div class="footer-col">
         <h4>Follow Us</h4>
         <div class="social-links">
           <a href="https://www.facebook.com/profile.php?id=61578932424898" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
@@ -170,11 +177,20 @@
     </div>
   </footer>
 
-  <!-- Firebase -->
+  <!-- Firebase + App Script -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, doc, getDoc, updateDoc, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-lite.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-lite.js";
 
+    // Footer year
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+    // Mobile menu
+    document.getElementById("hamburger").addEventListener("click", () => {
+      document.getElementById("navMenu").classList.toggle("show");
+    });
+
+    // Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyAwAxP-MWwNnKP59PA6joil4Ceq10eozlc",
       authDomain: "wafula-s-educational-posts.firebaseapp.com",
@@ -183,89 +199,77 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    document.getElementById("footerYear").textContent = new Date().getFullYear();
-    document.getElementById("hamburger").addEventListener("click",()=>document.getElementById("navMenu").classList.toggle("show"));
-
+    // Helpers
     function extractFirstImage(html){
-      if (!html) return null;
+      let src = "https://via.placeholder.com/800x400?text=Inspire+Me";
+      if (!html) return src;
       const parser = new DOMParser();
-      const d = parser.parseFromString(html, "text/html");
-      const img = d.querySelector("img");
-      return img ? img.getAttribute("src") : null;
-    }
-    function stripFirstImage(html){
-      if (!html) return "";
-      return html.replace(/<img[^>]*>/i,""); // remove only the first <img>
+      const doc = parser.parseFromString(html, "text/html");
+      const img = doc.querySelector("img");
+      if (img && img.getAttribute("src")) src = img.getAttribute("src");
+      return src;
     }
     function stripHTML(s){ return s ? s.replace(/<[^>]*>?/gm,"") : ""; }
-    function formatDate(ts){
-      try{
-        if(ts && typeof ts === "object" && "seconds" in ts){ return new Date(ts.seconds*1000).toLocaleDateString(); }
-        return ts ? new Date(ts).toLocaleDateString() : "";
-      }catch(_){ return ""; }
+
+    // State
+    let allPosts = [];
+    let currentIndex = 1; // after featured
+    const pageSize = 9;
+
+    async function fetchPosts(){
+      const qRef = query(collection(db,"posts"), orderBy("timestamp","desc"));
+      const snap = await getDocs(qRef);
+      if (snap.empty) return;
+
+      allPosts = snap.docs.map(d => ({ id:d.id, ...d.data() }))
+                          .filter(p => (p.category||"").toLowerCase() === "inspire me");
+
+      if (!allPosts.length) return;
+
+      renderFeatured(allPosts[0]);
+      document.getElementById("postsGrid").innerHTML = ""; // replace samples
+      renderNextBatch();
     }
 
-    const params = new URLSearchParams(window.location.search);
-    const postId = params.get("id");
-
-    async function loadPost(){
-      if(!postId) return;
-      const ref = doc(db,"posts",postId);
-      const snap = await getDoc(ref);
-      if(!snap.exists()) return;
-
-      const post = snap.data();
-      const firstImg = extractFirstImage(post.article);
-      const cleanArticle = stripFirstImage(post.article);
-      const views = typeof post.views === "number" ? post.views : 0;
-
-      document.getElementById("postTitle").textContent = post.title || "Untitled";
-      document.getElementById("postAuthor").textContent = post.author || "Samuwa Edukates";
-      document.getElementById("postDate").textContent = formatDate(post.timestamp);
-      document.getElementById("postImage").src = firstImg || "https://via.placeholder.com/1200x460?text=No+Image";
-      document.getElementById("postBody").innerHTML = cleanArticle || "";
-      document.getElementById("postViews").textContent = views;
-
-      document.title = `${post.title || "Post"} – Samuwa Edukates`;
-      const firstParagraph = stripHTML(cleanArticle||"").split(".").filter(Boolean)[0] || "Read inspiring stories and educational insights.";
-      document.querySelector("#metaDescription").setAttribute("content", firstParagraph);
-
-      const pageUrl = encodeURIComponent(window.location.href);
-      const pageTitle = encodeURIComponent(post.title || "Samuwa Edukates");
-      document.getElementById("shareFacebook").href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-      document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
-      document.getElementById("shareLinkedIn").href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
-      document.getElementById("shareWhatsApp").href = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
-
-      try{
-        await updateDoc(ref, { views: views + 1 });
-        document.getElementById("postViews").textContent = views + 1;
-      }catch(e){ console.warn("Views update failed:", e); }
-
-      loadRelatedPosts(postId);
+    function renderFeatured(post){
+      document.getElementById("featuredStory").innerHTML = `
+        <a href="post.html?id=${post.id}">
+          <img src="${extractFirstImage(post.article)}" alt="${post.title}" loading="lazy">
+          <div class="overlay">${post.title}</div>
+        </a>
+      `;
     }
 
-    async function loadRelatedPosts(currentPostId){
-      const qRef = query(collection(db,"posts"), orderBy("timestamp","desc"), limit(10));
-      const relatedSnap = await getDocs(qRef);
-      const relatedContainer = document.getElementById("relatedPosts");
-      relatedContainer.innerHTML = "";
-      let added = 0;
+    function renderNextBatch(){
+      const grid = document.getElementById("postsGrid");
+      const slice = allPosts.slice(currentIndex, currentIndex + pageSize);
 
-      relatedSnap.forEach(d=>{
-        if(added >= 6) return;
-        if(d.id === currentPostId) return;
-        const p = d.data();
-        const cat = (p.category || "").toLowerCase();
-        if(cat === "news") return;
-        const li = document.createElement("li");
-        li.innerHTML = `<a href="post.html?id=${d.id}">${p.title || "Untitled"}</a>`;
-        relatedContainer.appendChild(li);
-        added++;
+      slice.forEach(post => {
+        const imgSrc = extractFirstImage(post.article);
+        const excerpt = stripHTML(post.article).split(/\s+/).slice(0,20).join(" ");
+        const card = document.createElement("div");
+        card.className = "post-card";
+        card.innerHTML = `
+          <a href="post.html?id=${post.id}">
+            <img src="${imgSrc}" alt="${post.title}" loading="lazy">
+          </a>
+          <div class="content">
+            <div class="title">${post.title}</div>
+            <div class="excerpt">${excerpt}...</div>
+          </div>
+        `;
+        grid.appendChild(card);
       });
+
+      currentIndex += slice.length;
+      if (currentIndex >= allPosts.length) {
+        document.getElementById("loadMoreBtn").style.display = "none";
+      }
     }
 
-    loadPost();
+    document.getElementById("loadMoreBtn").addEventListener("click", renderNextBatch);
+
+    fetchPosts();
   </script>
 </body>
 </html>
